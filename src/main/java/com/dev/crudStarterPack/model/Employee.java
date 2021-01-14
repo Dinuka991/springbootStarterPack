@@ -17,6 +17,7 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
+    @Column(unique = true)
     Long employeeId;
     String employeeName;
     String employeeMobile;

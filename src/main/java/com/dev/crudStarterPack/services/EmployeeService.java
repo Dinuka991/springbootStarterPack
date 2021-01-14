@@ -1,14 +1,16 @@
 package com.dev.crudStarterPack.services;
 
 import com.dev.crudStarterPack.dto.EmployeeDTO;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public interface EmployeeService {
 
     List<EmployeeDTO> getAll();
 
     EmployeeDTO  addEmployee(EmployeeDTO employeeDTO);
 
-    public EmployeeDTO updateEmployee(EmployeeDTO employeeDTO , Long employeeId);
+    EmployeeDTO updateEmployee(EmployeeDTO employeeDTO , Long employeeId);
 }

@@ -9,7 +9,4 @@ public class CrudStarterPackApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CrudStarterPackApplication.class, args);
 	}
-
-
-
 }
