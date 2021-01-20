@@ -40,9 +40,9 @@ public class EmployeeServiceImpl  implements EmployeeService {
         return employeeMapper.employeeToEmployeeDto(saveEmployee);
     }
 
-    public EmployeeDTO updateEmployee(EmployeeDTO employeeDTO, Long employeeId) {
+    public EmployeeDTO updateEmployee(EmployeeDTO employeeDTO, Long id) {
 
-        EmployeeDTO updatedEmployee = employeeRepository.findById(employeeId)
+        EmployeeDTO updatedEmployee = employeeRepository.findById(id)
                 .map(employee -> {
                     employeeMapper.employeeDtoToEmployee(employeeDTO);
                     Employee saveEmployee = employeeRepository.save(employee);

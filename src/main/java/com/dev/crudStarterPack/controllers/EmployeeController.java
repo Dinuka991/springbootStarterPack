@@ -24,7 +24,7 @@ public class EmployeeController {
     private final EmployeeService employeeService;
 
     @GetMapping("/all")
-    ResponseEntity<List<EmployeeDTO>> all() {
+    public  ResponseEntity<List<EmployeeDTO>> all() {
         return  ResponseEntity.ok(employeeService.getAll());
     }
 
