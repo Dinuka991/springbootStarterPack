@@ -13,7 +13,7 @@ import java.util.Date;
 @Builder
 public class EmployeeDTO {
 
-
+    Long id;
     Long employeeId;
     String employeeName;
     String employeeMobile;

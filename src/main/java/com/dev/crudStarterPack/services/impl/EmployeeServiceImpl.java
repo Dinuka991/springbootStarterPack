@@ -39,8 +39,16 @@ public class EmployeeServiceImpl  implements EmployeeService {
 
         EmployeeDTO updatedEmployee = employeeRepository.findById(employeeId)
                 .map(employee -> {
-                    employeeMapper.employeeDtoToEmployee(employeeDTO);
-                    Employee saveEmployee = employeeRepository.save(employee);
+
+                    EmployeeDTO updateEmp = employeeMapper.employeeToEmployeeDto(employee);
+
+                    updateEmp.setEmployeeName(employeeDTO.getEmployeeName());
+                    updateEmp.setEmployeeDate(employeeDTO.getEmployeeDate());
+                    updateEmp.setEmployeeMobile(employeeDTO.getEmployeeMobile());
+                    updateEmp.setEmployeeEmail(employeeDTO.getEmployeeEmail());
+                    updateEmp.setEmployeeId(employeeDTO.getEmployeeId());
+
+                    Employee saveEmployee = employeeRepository.save(employeeMapper.employeeDtoToEmployee(updateEmp));
                     return employeeMapper.employeeToEmployeeDto(saveEmployee);
 
                 })
