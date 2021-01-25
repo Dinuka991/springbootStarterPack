@@ -1,7 +1,6 @@
 package com.dev.crudStarterPack.dto;
 import com.dev.crudStarterPack.model.Employee;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 
 import java.util.List;
 

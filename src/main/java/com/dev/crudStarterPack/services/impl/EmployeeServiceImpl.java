@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 
 @RequiredArgsConstructor
@@ -27,6 +28,14 @@ public class EmployeeServiceImpl  implements EmployeeService {
         List<Employee> emp = employeeRepository.findAll();
         return employeeMapper.employeeToDto(emp);
     }
+
+    @Override
+    public List<EmployeeDTO> searchEmployee(Long employeeId , String employeeName , String  employeeMobile   ) {
+        List<Employee> emp =  employeeRepository.findByName(  employeeId ,  employeeName  , employeeMobile );
+        return employeeMapper.employeeToDto(emp);
+
+    }
+
 
     public EmployeeDTO addEmployee(EmployeeDTO employeeDTO) {
         Employee employee = employeeMapper.employeeDtoToEmployee(employeeDTO);

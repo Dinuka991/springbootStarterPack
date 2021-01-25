@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/employee-services")
@@ -24,6 +25,13 @@ public class EmployeeController {
         return  ResponseEntity.ok(employeeService.getAll());
     }
 
+    @GetMapping("/search")
+    ResponseEntity<List<EmployeeDTO>> search(@RequestParam  (required = false ) Long employeeId ,
+                                             @RequestParam  (required = false )String employeeName ,
+                                              @RequestParam  (required = false )String employeeMobile){
+        return  ResponseEntity.ok(employeeService.searchEmployee( employeeId , employeeName , employeeMobile));
+    }
+
     @PutMapping("/add")
     public ResponseEntity<EmployeeDTO> add(@RequestBody EmployeeDTO employeeDTO ){
         EmployeeDTO createdEmployee = employeeService.addEmployee(employeeDTO);
@@ -36,4 +44,5 @@ public class EmployeeController {
         EmployeeDTO createdEmployee = employeeService.updateEmployee(employeeDTO , id);
         return ResponseEntity.created(URI.create("/users/" + createdEmployee.getEmployeeName() + "/profile")).body(createdEmployee);
     }
+
 }
