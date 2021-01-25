@@ -43,13 +43,6 @@ public class EmployeeController {
         return ResponseEntity.created(URI.create("/users/" + createdEmployee.getEmployeeName() + "/profile")).body(createdEmployee);
     }
 
-    @PutMapping("employees/{id}")
-    public ResponseEntity<EmployeeDTO> updateEmp(@RequestBody  EmployeeDTO employeeDTO ,@PathVariable Long id)
-    {
-        EmployeeDTO createdEmployee = employeeService.updateEmployee(employeeDTO , id);
-        return ResponseEntity.created(URI.create("/users/" + createdEmployee.getEmployeeName() + "/profile")).body(createdEmployee);
-    }
-
     @GetMapping("/download/employee.xlsx")
     public  void downloadCsv(HttpServletResponse response) throws IOException{
         response.setContentType("application/octet-stream");

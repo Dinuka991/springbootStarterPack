@@ -7,7 +7,6 @@ import com.dev.crudStarterPack.services.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
@@ -43,26 +42,6 @@ public class EmployeeServiceImpl  implements EmployeeService {
         employee.setEmployeeDate(new Date());
         Employee saveEmployee = employeeRepository.save(employee);
         return employeeMapper.employeeToEmployeeDto(saveEmployee);
-    }
-
-    public EmployeeDTO updateEmployee(EmployeeDTO employeeDTO, Long id) {
-
-        EmployeeDTO updatedEmployee = employeeRepository.findById(id)
-                .map(employee -> {
-                    employeeMapper.employeeDtoToEmployee(employeeDTO);
-                    Employee saveEmployee = employeeRepository.save(employee);
-                    return employeeMapper.employeeToEmployeeDto(saveEmployee);
-
-                })
-                .orElseGet(() -> {
-                    Employee employee = employeeMapper.employeeDtoToEmployee(employeeDTO);
-                    Employee saveEmployee = employeeRepository.save(employee);
-                    return employeeMapper.employeeToEmployeeDto(saveEmployee);
-
-                });
-
-
-        return updatedEmployee;
     }
 
     @Override

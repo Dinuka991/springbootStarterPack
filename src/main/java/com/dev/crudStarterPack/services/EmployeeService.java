@@ -16,7 +16,5 @@ public interface EmployeeService {
 
     EmployeeDTO  addEmployee(EmployeeDTO employeeDTO);
 
-    EmployeeDTO updateEmployee(EmployeeDTO employeeDTO , Long employeeId);
-
     ByteArrayInputStream EmployeeListToExcel(List<EmployeeDTO> employeeDTOList);
 }
