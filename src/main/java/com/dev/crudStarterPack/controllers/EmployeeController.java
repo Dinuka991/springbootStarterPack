@@ -1,8 +1,9 @@
 package com.dev.crudStarterPack.controllers;
 import com.dev.crudStarterPack.dto.EmployeeDTO;
+import com.dev.crudStarterPack.model.Employee;
 import com.dev.crudStarterPack.services.EmployeeService;
-import com.dev.crudStarterPack.services.impl.EmployeeServiceImpl;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.apache.commons.compress.utils.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,12 +21,20 @@ import java.util.List;
 @CrossOrigin
 public class EmployeeController {
 
-
     private final EmployeeService employeeService;
 
     @GetMapping("/all")
-    public  ResponseEntity<List<EmployeeDTO>> all() {
+    ResponseEntity<List<EmployeeDTO>> all() {
         return  ResponseEntity.ok(employeeService.getAll());
+    }
+
+    @GetMapping("/search")
+    Page<Employee> search(@RequestParam  (required = false ) Long employeeId ,
+                          @RequestParam  (required = false )String employeeName ,
+                          @RequestParam  (required = false )String employeeMobile,
+                          @RequestParam int first ,
+                          @RequestParam  int maxResult){
+        return   employeeService.searchEmployee( employeeId , employeeName , employeeMobile , first, maxResult );
     }
 
     @PutMapping("/add")

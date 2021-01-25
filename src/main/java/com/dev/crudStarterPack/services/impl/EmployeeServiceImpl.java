@@ -1,5 +1,4 @@
 package com.dev.crudStarterPack.services.impl;
-
 import com.dev.crudStarterPack.dto.EmployeeDTO;
 import com.dev.crudStarterPack.dto.EmployeeMapper;
 import com.dev.crudStarterPack.model.Employee;
@@ -9,20 +8,20 @@ import lombok.RequiredArgsConstructor;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import org.springframework.data.domain.PageRequest;
 import java.util.Date;
 import java.util.List;
-
 
 @RequiredArgsConstructor
 @Service
 public class EmployeeServiceImpl  implements EmployeeService {
 
-    @Autowired
     private final EmployeeRepository employeeRepository;
     private final EmployeeMapper employeeMapper;
 
@@ -33,6 +32,12 @@ public class EmployeeServiceImpl  implements EmployeeService {
         return employeeMapper.employeeToDto(emp);
     }
 
+    @Override
+    public Page<Employee> searchEmployee(Long employeeId , String employeeName , String  employeeMobile , int first , int maxResult) {
+     return employeeRepository.findByName(  employeeId ,  employeeName  , employeeMobile , PageRequest.of( first , maxResult )  );
+    }
+
+    @Override
     public EmployeeDTO addEmployee(EmployeeDTO employeeDTO) {
         Employee employee = employeeMapper.employeeDtoToEmployee(employeeDTO);
         employee.setEmployeeDate(new Date());
