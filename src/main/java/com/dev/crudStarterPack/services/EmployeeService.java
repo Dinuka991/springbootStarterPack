@@ -14,5 +14,4 @@ public interface EmployeeService {
 
     EmployeeDTO  addEmployee(EmployeeDTO employeeDTO);
 
-
 }

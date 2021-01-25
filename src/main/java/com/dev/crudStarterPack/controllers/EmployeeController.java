@@ -6,7 +6,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.net.URI;
 import java.util.List;
 
@@ -15,7 +14,6 @@ import java.util.List;
 @RequiredArgsConstructor
 @CrossOrigin
 public class EmployeeController {
-
 
     private final EmployeeService employeeService;
 
@@ -38,6 +36,5 @@ public class EmployeeController {
         EmployeeDTO createdEmployee = employeeService.addEmployee(employeeDTO);
         return ResponseEntity.created(URI.create("/users/" + createdEmployee.getEmployeeName() + "/profile")).body(createdEmployee);
     }
-
 
 }
