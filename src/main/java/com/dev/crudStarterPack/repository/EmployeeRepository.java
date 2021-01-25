@@ -17,6 +17,6 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 
 
     @Query("select e from Employee e where (?1 is NULL or e.employeeId  like  ?1) and (?2 is NULL or e.employeeName like %?2%) and (?3 is NULL or e.employeeMobile  like %?3%)")
-    List<Employee> findByName( Long employeeId  , String employeeName , String employeeMobile );
+    Page <Employee> findByName( Long employeeId  , String employeeName , String employeeMobile  , Pageable pageable);
 
 }
