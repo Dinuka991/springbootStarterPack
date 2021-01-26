@@ -1,4 +1,5 @@
 package com.dev.crudStarterPack.dto;
+import com.dev.crudStarterPack.model.Department;
 import com.dev.crudStarterPack.model.Employee;
 import org.mapstruct.Mapper;
 
@@ -11,6 +12,8 @@ public interface EmployeeMapper {
     List<EmployeeDTO> employeeToDto(List<Employee> employee );
     EmployeeDTO  employeeToEmployeeDto(Employee employee);
     Employee employeeDtoToEmployee(EmployeeDTO employeeDTO);
+
+    List<DepartmentDTO>   departmentToDto(List<Department> departments);
 
 }
 

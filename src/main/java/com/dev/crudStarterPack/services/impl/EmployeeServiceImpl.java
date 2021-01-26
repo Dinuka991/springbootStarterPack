@@ -1,7 +1,9 @@
 package com.dev.crudStarterPack.services.impl;
 import com.dev.crudStarterPack.dto.EmployeeDTO;
 import com.dev.crudStarterPack.dto.EmployeeMapper;
+import com.dev.crudStarterPack.model.Department;
 import com.dev.crudStarterPack.model.Employee;
+import com.dev.crudStarterPack.repository.DepartmentRepository;
 import com.dev.crudStarterPack.repository.EmployeeRepository;
 import com.dev.crudStarterPack.services.EmployeeService;
 import lombok.RequiredArgsConstructor;
@@ -22,6 +24,7 @@ import java.util.List;
 public class EmployeeServiceImpl  implements EmployeeService {
 
     private final EmployeeRepository employeeRepository;
+    private final DepartmentRepository departmentRepository;
     private final EmployeeMapper employeeMapper;
 
 
@@ -88,7 +91,6 @@ public class EmployeeServiceImpl  implements EmployeeService {
         }
 
     }
-
 
 }
 
