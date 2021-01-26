@@ -14,6 +14,7 @@ import java.util.Date;
 @Entity
 @Table(name = "EmployeeM")
 public class Employee {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
@@ -24,4 +25,5 @@ public class Employee {
     String employeeEmail;
     @JsonFormat(pattern="yyyy-MM-dd")
     Date employeeDate;
+
 }
