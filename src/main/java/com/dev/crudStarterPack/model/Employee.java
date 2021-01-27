@@ -1,15 +1,11 @@
 package com.dev.crudStarterPack.model;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.*;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
+import lombok.Data;
 import javax.persistence.*;
 import java.util.Date;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
-@EntityListeners(AuditingEntityListener.class)
+
+
 @Data
 @Entity
 @Table(name = "EmployeeM")

@@ -1,7 +1,4 @@
 package com.dev.crudStarterPack.dto;
-
-
-
 import lombok.Data;
 
 @Data

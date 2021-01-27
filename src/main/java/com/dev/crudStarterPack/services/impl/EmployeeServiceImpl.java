@@ -1,9 +1,7 @@
 package com.dev.crudStarterPack.services.impl;
 import com.dev.crudStarterPack.dto.EmployeeDTO;
-import com.dev.crudStarterPack.dto.EmployeeMapper;
-import com.dev.crudStarterPack.model.Department;
+import com.dev.crudStarterPack.dto.ModelMapper;
 import com.dev.crudStarterPack.model.Employee;
-import com.dev.crudStarterPack.repository.DepartmentRepository;
 import com.dev.crudStarterPack.repository.EmployeeRepository;
 import com.dev.crudStarterPack.services.EmployeeService;
 import lombok.RequiredArgsConstructor;
@@ -11,7 +9,6 @@ import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
-
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -24,14 +21,13 @@ import java.util.List;
 public class EmployeeServiceImpl  implements EmployeeService {
 
     private final EmployeeRepository employeeRepository;
-    private final DepartmentRepository departmentRepository;
-    private final EmployeeMapper employeeMapper;
+    private final ModelMapper modelMapper;
 
 
     @Override
     public List<EmployeeDTO> getAll() {
         List<Employee> emp = employeeRepository.findAll();
-        return employeeMapper.employeeToDto(emp);
+        return modelMapper.employeeToDto(emp);
     }
 
     @Override
@@ -41,10 +37,10 @@ public class EmployeeServiceImpl  implements EmployeeService {
 
     @Override
     public EmployeeDTO addEmployee(EmployeeDTO employeeDTO) {
-        Employee employee = employeeMapper.employeeDtoToEmployee(employeeDTO);
+        Employee employee = modelMapper.employeeDtoToEmployee(employeeDTO);
         employee.setEmployeeDate(new Date());
         Employee saveEmployee = employeeRepository.save(employee);
-        return employeeMapper.employeeToEmployeeDto(saveEmployee);
+        return modelMapper.employeeToEmployeeDto(saveEmployee);
     }
 
     @Override
