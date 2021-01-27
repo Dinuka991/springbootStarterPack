@@ -15,6 +15,7 @@ public class DepartmentServiceImpl  implements DepartmentService {
 
     private  final DepartmentRepository departmentRepository;
     private  final ModelMapper modelMapper;
+
     @Override
     public List<DepartmentDTO> getAll() {
         List<Department> dep =  departmentRepository.findAll();

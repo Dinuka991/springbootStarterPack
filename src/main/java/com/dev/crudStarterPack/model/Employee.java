@@ -4,8 +4,6 @@ import lombok.Data;
 import javax.persistence.*;
 import java.util.Date;
 
-
-
 @Data
 @Entity
 @Table(name = "EmployeeM")
@@ -21,5 +19,8 @@ public class Employee {
     String employeeEmail;
     @JsonFormat(pattern="yyyy-MM-dd")
     Date employeeDate;
+    @ManyToOne
+    @JoinColumn(name = "departmentId", referencedColumnName = "departmentId")
+    Department department;
 
 }
