@@ -26,10 +26,6 @@ public class EmployeeController {
         return  ResponseEntity.ok(employeeService.getAll());
     }
 
-    @GetMapping("/allById")
-    ResponseEntity<List<Employee>> allById() {
-        return  ResponseEntity.ok(employeeService.getAllById());
-    }
 
     @GetMapping("/search")
     Page<Employee> search(@RequestParam  (required = false ) Long employeeId ,

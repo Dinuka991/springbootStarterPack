@@ -15,6 +15,5 @@ public interface EmployeeService {
 
     ByteArrayInputStream EmployeeListToExcel(List<EmployeeDTO> employeeDTOList);
 
-    List<Employee> getAllById();
 
 }
