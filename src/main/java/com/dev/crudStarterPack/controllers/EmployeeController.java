@@ -4,8 +4,12 @@ import com.dev.crudStarterPack.model.Employee;
 import com.dev.crudStarterPack.services.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.apache.commons.compress.utils.IOUtils;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import javax.servlet.http.HttpServletResponse;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.net.URI;
 import java.util.List;
 
@@ -22,6 +26,7 @@ public class EmployeeController {
         return  ResponseEntity.ok(employeeService.getAll());
     }
 
+
     @GetMapping("/search")
     Page<Employee> search(@RequestParam  (required = false ) Long employeeId ,
                           @RequestParam  (required = false )String employeeName ,
@@ -35,6 +40,14 @@ public class EmployeeController {
     public ResponseEntity<EmployeeDTO> add(@RequestBody EmployeeDTO employeeDTO ){
         EmployeeDTO createdEmployee = employeeService.addEmployee(employeeDTO);
         return ResponseEntity.created(URI.create("/users/" + createdEmployee.getEmployeeName() + "/profile")).body(createdEmployee);
+    }
+
+    @GetMapping("/download/employee.xlsx")
+    public  void downloadCsv(HttpServletResponse response) throws IOException{
+        response.setContentType("application/octet-stream");
+        response.setHeader("Content-Disposition", "attachment;filename=employee.xlsx");
+        ByteArrayInputStream stream = employeeService.EmployeeListToExcel(employeeService.getAll());
+        IOUtils.copy(stream, response.getOutputStream());
     }
 
 }
