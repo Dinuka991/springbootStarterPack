@@ -15,4 +15,8 @@ public class EmployeeDTO {
     Long departmentId;
     String departmentName;
     String departmentHead;
+    Long addressId;
+    String line1;
+    String city;
+    String country;
 }

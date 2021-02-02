@@ -18,8 +18,13 @@ public class Employee {
     String employeeEmail;
     @JsonFormat(pattern="yyyy-MM-dd")
     Date employeeDate;
-    @ManyToOne
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "departmentId", referencedColumnName = "departmentId")
     Department department;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "addressId")
+    Address address;
 
 }

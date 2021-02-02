@@ -1,4 +1,5 @@
 package com.dev.crudStarterPack.controllers;
+import com.dev.crudStarterPack.dto.AddressDTO;
 import com.dev.crudStarterPack.dto.EmployeeDTO;
 import com.dev.crudStarterPack.model.Employee;
 import com.dev.crudStarterPack.services.EmployeeService;
@@ -36,10 +37,16 @@ public class EmployeeController {
         return   employeeService.searchEmployee( employeeId , employeeName , employeeMobile , first, maxResult );
     }
 
-    @PutMapping("/add")
+    @PostMapping("/add")
     public ResponseEntity<EmployeeDTO> add(@RequestBody EmployeeDTO employeeDTO ){
         EmployeeDTO createdEmployee = employeeService.addEmployee(employeeDTO);
         return ResponseEntity.created(URI.create("/users/" + createdEmployee.getEmployeeName() + "/profile")).body(createdEmployee);
+    }
+
+    @PostMapping("/addAddress")
+    public ResponseEntity<AddressDTO> addAddress(@RequestBody AddressDTO addressDTO){
+        AddressDTO createdAddress = employeeService.addAddress(addressDTO);
+        return  ResponseEntity.created(URI.create("/users/" + createdAddress.getAddressId() + "/profile")).body(createdAddress);
     }
 
     @GetMapping("/download/employee.xlsx")

@@ -1,7 +1,10 @@
 package com.dev.crudStarterPack.services.impl;
+import com.dev.crudStarterPack.dto.AddressDTO;
 import com.dev.crudStarterPack.dto.EmployeeDTO;
 import com.dev.crudStarterPack.dto.ModelMapper;
+import com.dev.crudStarterPack.model.Address;
 import com.dev.crudStarterPack.model.Employee;
+import com.dev.crudStarterPack.repository.AddressRepository;
 import com.dev.crudStarterPack.repository.EmployeeRepository;
 import com.dev.crudStarterPack.services.EmployeeService;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +24,7 @@ import java.util.List;
 public class EmployeeServiceImpl  implements EmployeeService {
 
     private final EmployeeRepository employeeRepository;
+    private  final AddressRepository addressRepository;
     private final ModelMapper modelMapper;
 
 
@@ -41,6 +45,13 @@ public class EmployeeServiceImpl  implements EmployeeService {
         employee.setEmployeeDate(new Date());
         Employee saveEmployee = employeeRepository.save(employee);
         return modelMapper.employeeToEmployeeDto(saveEmployee);
+    }
+
+    @Override
+    public AddressDTO addAddress(AddressDTO addressDTO) {
+        Address address = modelMapper.addressDtoToAddress(addressDTO);
+        Address address1 =  addressRepository.save(address);
+        return  modelMapper.addressToAddressDto(address1);
     }
 
     @Override
