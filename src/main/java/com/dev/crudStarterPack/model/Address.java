@@ -5,7 +5,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 
-@Table(name = "AddressC1")
+@Table(name = "AddressC2")
 @Entity
 @Data
 public class Address {
@@ -16,6 +16,7 @@ public class Address {
     String line1;
     String city;
     String country;
+
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "employeeId")

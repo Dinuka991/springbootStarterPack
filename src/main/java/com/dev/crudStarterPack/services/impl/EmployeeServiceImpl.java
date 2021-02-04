@@ -1,5 +1,6 @@
 package com.dev.crudStarterPack.services.impl;
 import com.dev.crudStarterPack.dto.AddressDTO;
+import com.dev.crudStarterPack.dto.DepartmentDTO;
 import com.dev.crudStarterPack.dto.EmployeeDTO;
 import com.dev.crudStarterPack.dto.ModelMapper;
 import com.dev.crudStarterPack.model.Address;
@@ -41,8 +42,19 @@ public class EmployeeServiceImpl  implements EmployeeService {
 
     @Override
     public EmployeeDTO addEmployee(EmployeeDTO employeeDTO) {
+        System.out.println(employeeDTO);
+        System.out.println("---------------------------------------------------------------------------------");
+        AddressDTO addressDTO = new AddressDTO();
+        addressDTO.setLine1(employeeDTO.getLine1());
+        addressDTO.setCity(employeeDTO.getCity());
+        addressDTO.setCountry(employeeDTO.getCountry());
+        addressDTO.setEmployeeId(employeeDTO.getEmployeeId());
+        AddressDTO addressDTO2 = addAddress(addressDTO);
+        employeeDTO.setAddressId(addressDTO2.getAddressId());
+        System.out.println("-------------------------------------------------------------------------------------------------------------");
+        System.out.println(employeeDTO);
+
         Employee employee = modelMapper.employeeDtoToEmployee(employeeDTO);
-        employee.setEmployeeDate(new Date());
         Employee saveEmployee = employeeRepository.save(employee);
         return modelMapper.employeeToEmployeeDto(saveEmployee);
     }

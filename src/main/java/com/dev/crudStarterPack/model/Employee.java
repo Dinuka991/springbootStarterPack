@@ -24,7 +24,7 @@ public class Employee {
     Department department;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "addressId")
+    @JoinColumn(name = "addressId" , referencedColumnName = "addressId")
     Address address;
 
 }
