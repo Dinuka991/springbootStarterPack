@@ -5,22 +5,16 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 
-@Table(name = "AddressC2")
+@Table(name = "AddressT1")
 @Entity
 @Data
 public class Address {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long addressId;
-    String line1;
+
+    long addressId;
+    String streetName;
     String city;
-    String country;
-
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "employeeId")
-    Employee employee;
-
+    String Country;
 
 }

@@ -5,8 +5,7 @@ import lombok.Data;
 @Data
 public class AddressDTO {
     Long addressId;
-    Long employeeId;
-    String line1;
+    String streetName;
     String city;
     String Country;
 }

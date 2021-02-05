@@ -12,11 +12,6 @@ public class EmployeeDTO {
     String employeeEmail;
     @JsonFormat(pattern="yyyy-MM-dd")
     Date employeeDate;
-    Long departmentId;
-    String departmentName;
-    String departmentHead;
-    Long addressId;
-    String line1;
-    String city;
-    String country;
+    DepartmentDTO  department;
+    AddressDTO address;
 }

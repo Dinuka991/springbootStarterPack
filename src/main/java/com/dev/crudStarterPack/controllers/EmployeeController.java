@@ -37,7 +37,7 @@ public class EmployeeController {
         return   employeeService.searchEmployee( employeeId , employeeName , employeeMobile , first, maxResult );
     }
 
-    @PostMapping("/add")
+    @PutMapping("/add")
     public ResponseEntity<EmployeeDTO> add(@RequestBody EmployeeDTO employeeDTO ){
         EmployeeDTO createdEmployee = employeeService.addEmployee(employeeDTO);
         return ResponseEntity.created(URI.create("/users/" + createdEmployee.getEmployeeName() + "/profile")).body(createdEmployee);

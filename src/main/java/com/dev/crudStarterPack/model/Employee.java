@@ -6,7 +6,7 @@ import java.util.Date;
 
 @Data
 @Entity
-@Table(name = "EmployeeM")
+@Table(name = "EmployeeT1")
 public class Employee {
 
     @Id
@@ -23,8 +23,7 @@ public class Employee {
     @JoinColumn(name = "departmentId", referencedColumnName = "departmentId")
     Department department;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "addressId" , referencedColumnName = "addressId")
+    @OneToOne
     Address address;
 
 }
