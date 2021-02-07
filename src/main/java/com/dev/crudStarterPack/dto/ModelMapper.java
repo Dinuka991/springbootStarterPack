@@ -1,5 +1,6 @@
 package com.dev.crudStarterPack.dto;
 import com.dev.crudStarterPack.model.Address;
+import com.dev.crudStarterPack.model.Country;
 import com.dev.crudStarterPack.model.Department;
 import com.dev.crudStarterPack.model.Employee;
 import org.apache.commons.math3.analysis.function.Add;
@@ -26,6 +27,9 @@ public interface ModelMapper {
     AddressDTO addressToAddressDto(Address address);
 
     Address addressDtoToAddress(AddressDTO addressDTO);
+
+    List<CountryDTO>   countryListToCountryDTOList(List<Country> countries);
+
 
 
 

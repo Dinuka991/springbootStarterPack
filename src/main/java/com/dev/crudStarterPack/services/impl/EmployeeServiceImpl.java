@@ -1,6 +1,5 @@
 package com.dev.crudStarterPack.services.impl;
 import com.dev.crudStarterPack.dto.AddressDTO;
-import com.dev.crudStarterPack.dto.DepartmentDTO;
 import com.dev.crudStarterPack.dto.EmployeeDTO;
 import com.dev.crudStarterPack.dto.ModelMapper;
 import com.dev.crudStarterPack.model.Address;
@@ -17,7 +16,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import org.springframework.data.domain.PageRequest;
-import java.util.Date;
+
 import java.util.List;
 
 @RequiredArgsConstructor

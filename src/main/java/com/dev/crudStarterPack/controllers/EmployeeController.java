@@ -1,7 +1,9 @@
 package com.dev.crudStarterPack.controllers;
 import com.dev.crudStarterPack.dto.AddressDTO;
+import com.dev.crudStarterPack.dto.CountryDTO;
 import com.dev.crudStarterPack.dto.EmployeeDTO;
 import com.dev.crudStarterPack.model.Employee;
+import com.dev.crudStarterPack.services.CountryService;
 import com.dev.crudStarterPack.services.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -21,11 +23,15 @@ import java.util.List;
 public class EmployeeController {
 
     private final EmployeeService employeeService;
+    private  final CountryService countryService;
 
     @GetMapping("/all")
     ResponseEntity<List<EmployeeDTO>> all() {
         return  ResponseEntity.ok(employeeService.getAll());
     }
+
+    @GetMapping("/countries")
+    ResponseEntity<List<CountryDTO>> getCountries(){ return  ResponseEntity.ok(countryService.getCountries());}
 
 
     @GetMapping("/search")

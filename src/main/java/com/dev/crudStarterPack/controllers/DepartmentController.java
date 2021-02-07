@@ -10,6 +10,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/department-service")
+@CrossOrigin
 
 
 public class DepartmentController {
